@@ -10,7 +10,7 @@ app.use(cors());
 const con = mysql.createConnection({
     user: "root",
     host: "localhost",
-    password: "",
+    password: "1234",
     database: "register"
 })
 
@@ -39,7 +39,7 @@ app.post("/login", (req, res) => {
     con.query("SELECT * FROM users WHERE username = ? AND password = ?", [username, password],
         (err, result) => {
             if (err) {
-                req.setEncoding({ err: err });
+                console.log(err);
             } else {
                 if (result.length > 0) {
                     console.log("------result--------");
